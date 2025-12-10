@@ -5,6 +5,8 @@ import com.example.SystemADemo.dtos.OutpayHeaderDTO;
 import com.example.SystemADemo.dtos.ZTPSPFDTO;
 import com.example.SystemADemo.service.DTOWriterService;
 import com.opencsv.CSVWriter;
+import org.springframework.stereotype.Service;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.RoundingMode;
@@ -14,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DTOWriterServiceImpl implements DTOWriterService {
 
     public void writeZTPSPFT(List<ZTPSPFDTO> list, Path destination) {
