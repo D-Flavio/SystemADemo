@@ -1,0 +1,49 @@
+ {
+	"info": {
+		"_postman_id": "28edb3fe-3f36-4f2e-894c-910900ab2872",
+		"name": "SystemAEndpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50724694",
+		"_collection_link": "https://flavio-delhusa-3760964.postman.co/workspace/SystemADemo~479dd597-5757-462c-8b7d-69fd7a2b7374/collection/50724694-28edb3fe-3f36-4f2e-894c-910900ab2872?action=share&source=collection_link&creator=50724694"
+	},
+	"item": [
+		{
+			"name": "move",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/move",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"move"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "csv",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"csv"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
