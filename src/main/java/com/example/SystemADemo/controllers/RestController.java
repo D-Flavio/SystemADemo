@@ -1,27 +1,82 @@
 package com.example.SystemADemo.controllers;
 
-import com.example.SystemADemo.csvWriters.DTOWriter;
+import com.example.SystemADemo.service.DTOWriterService;
+import com.example.SystemADemo.service.FileService;
 import com.example.SystemADemo.dtos.CustomerCompanyPolicyDTO;
 import com.example.SystemADemo.dtos.OutpayHeaderDTO;
 import com.example.SystemADemo.dtos.ZTPSPFDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-public class Controller {
+@org.springframework.web.bind.annotation.RestController
+public class RestController {
 
-    @GetMapping("/")
+    @Autowired
+    private DTOWriterService dtoWriterService;
+
+    @Autowired
+    private FileService fileService;
+
+    private static final String desktopPath = System.getProperty("user.home") + "/Desktop";
+
+    @GetMapping("/move")
+    public void startMove() {
+        fileService.makeDirectory("SystemAExports");
+        fileService.moveFile(Paths.get(desktopPath + "/tmp/CUSTCOMP01.txt"), Paths.get(desktopPath + "/SystemAExports/CUSTCOMP01.txt"));
+        fileService.moveFile(Paths.get(desktopPath + "/tmp/OUTPH_CUP_20200204_1829.TXT"), Paths.get(desktopPath + "/SystemAExports/OUTPH_CUP_20200204_1829.TXT"));
+        fileService.moveFile(Paths.get(desktopPath + "/tmp/ZTPSPF.TXT"), Paths.get(desktopPath + "/SystemAExports/ZTPSPF.TXT"));
+    }
+
+    @GetMapping("/csv")
     public void startExportToCSV() {
-        DTOWriter dtoWriter = new DTOWriter();
+        Path destination = Paths.get(desktopPath + "/SystemAExports");
+        fileService.makeDirectory("SystemAExports");
+        dtoWriterService.writeCustomerCompanyPolicy(generateCustomerCompanyPolicies(), destination);
+        dtoWriterService.writeOutpayHeader(generateOutpayHeaders(), destination);
+        dtoWriterService.writeZTPSPFT(generateZTPSPFs(), destination);
+    }
 
-        dtoWriter.writeZTPSPFT(generateZTPSPFs());
-        dtoWriter.writeOutpayHeader(generateOutpayHeaders());
-        dtoWriter.writeCustomerCompanyPolicy(generateCustomerCompanyPolicies());
+    private List<CustomerCompanyPolicyDTO> generateCustomerCompanyPolicies() {
+        List<CustomerCompanyPolicyDTO> list = new ArrayList<>();
+
+        list.add(new CustomerCompanyPolicyDTO(
+                "86000019",
+                "76000018",
+                "Szegedi István",
+                "76000018",
+                "Balatoni Gábor",
+                "00X",
+                "11111",
+                "6436 Budapest Rév u. 27."));
+
+        list.add(new CustomerCompanyPolicyDTO(
+                "86000092",
+                "76000091",
+                "Vakula Péter",
+                "76000199",
+                "Vörös János",
+                "00X",
+                "11111",
+                "2356 Baja Szent Miklós u. 10/b III. 10."));
+
+        list.add(new CustomerCompanyPolicyDTO(
+                "86000019",
+                "76000018",
+                "Horváth Domokos",
+                "76000223",
+                "Harcos Bálint",
+                "00X",
+                "11111",
+                "2346 Tokaj Kassai u. 25. IX. 36."));
+
+        return list;
     }
 
     private List<OutpayHeaderDTO> generateOutpayHeaders() {
@@ -95,42 +150,6 @@ public class Controller {
                 "defaultNotice06",
                 "91-978663",
                 LocalDateTime.now()));
-
-        return list;
-    }
-
-    private List<CustomerCompanyPolicyDTO> generateCustomerCompanyPolicies() {
-        List<CustomerCompanyPolicyDTO> list = new ArrayList<>();
-
-        list.add(new CustomerCompanyPolicyDTO(
-                "86000019",
-                "76000018",
-                "Szegedi István",
-                "76000018",
-                "Balatoni Gábor",
-                "00X",
-                "11111",
-                "6436 Budapest Rév u. 27."));
-
-        list.add(new CustomerCompanyPolicyDTO(
-                "86000092",
-                "76000091",
-                "Vakula Péter",
-                "76000199",
-                "Vörös János",
-                "00X",
-                "11111",
-                "2356 Baja Szent Miklós u. 10/b III. 10."));
-
-        list.add(new CustomerCompanyPolicyDTO(
-                "86000019",
-                "76000018",
-                "Horváth Domokos",
-                "76000223",
-                "Harcos Bálint",
-                "00X",
-                "11111",
-                "2346 Tokaj Kassai u. 25. IX. 36."));
 
         return list;
     }
