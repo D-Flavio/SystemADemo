@@ -3,7 +3,7 @@ package com.example.systemADemo.dtos;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class OutpayHeaderDTO extends BaseDTO {
+public class OutpayHeaderDTO {
 
     private String clntnum;
     private String chrdnum;
@@ -222,7 +222,6 @@ public class OutpayHeaderDTO extends BaseDTO {
     @Override
     public String toString() {
         return "OutpayHeaderDTO{" +
-                "id='" + getId() + '\'' +
                 ", clntnum='" + clntnum + '\'' +
                 ", chrdnum='" + chrdnum + '\'' +
                 ", letterType='" + letterType + '\'' +

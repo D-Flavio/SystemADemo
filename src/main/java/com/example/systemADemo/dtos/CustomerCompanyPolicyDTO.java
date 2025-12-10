@@ -1,6 +1,6 @@
 package com.example.systemADemo.dtos;
 
-public class CustomerCompanyPolicyDTO extends BaseDTO {
+public class CustomerCompanyPolicyDTO {
 
     private String chdrnum;
     private String cownnum;
@@ -89,7 +89,6 @@ public class CustomerCompanyPolicyDTO extends BaseDTO {
     @Override
     public String toString() {
         return "CustomerCompanyPolicyDTO{" +
-                "id='" + getId() + '\'' +
                 ", chdrnum='" + chdrnum + '\'' +
                 ", cownnum='" + cownnum + '\'' +
                 ", ownerName='" + ownerName + '\'' +

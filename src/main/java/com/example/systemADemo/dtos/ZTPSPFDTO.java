@@ -3,7 +3,7 @@ package com.example.systemADemo.dtos;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class ZTPSPFDTO extends BaseDTO {
+public class ZTPSPFDTO {
 
     private String chdrnum;
     private BigDecimal survalue;
@@ -62,7 +62,6 @@ public class ZTPSPFDTO extends BaseDTO {
     @Override
     public String toString() {
         return "ZTPSPFDTO{" +
-                "id='" + getId() + '\'' +
                 ", chdrnum='" + chdrnum + '\'' +
                 ", survalue=" + survalue +
                 ", company='" + company + '\'' +
