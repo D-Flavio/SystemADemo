@@ -27,9 +27,9 @@ public class OutpayHeaderDTO {
     private String claim_ID;
     private LocalDateTime tP2ProcessDate;
 
-    public OutpayHeaderDTO(String clntnum, String chrdnum, String letterType, LocalDateTime printDate, String dataID, String clntName, String clntAddress, LocalDateTime regDate, BigDecimal benPercent, String role1, String role2, String cownNum, String cownName, String notice01, String notice02, String notice03, String notice04, String notice05, String notice06, String claim_ID, LocalDateTime tP2ProcessDate) {
-        this.clntnum = clntnum;
-        this.chrdnum = chrdnum;
+    public OutpayHeaderDTO(String clntNum, String chrdNum, String letterType, LocalDateTime printDate, String dataID, String clntName, String clntAddress, LocalDateTime regDate, BigDecimal benPercent, String role1, String role2, String cownNum, String cownName, String notice01, String notice02, String notice03, String notice04, String notice05, String notice06, String claim_ID, LocalDateTime tP2ProcessDate) {
+        this.clntnum = clntNum;
+        this.chrdnum = chrdNum;
         this.letterType = letterType;
         this.printDate = printDate;
         this.dataID = dataID;

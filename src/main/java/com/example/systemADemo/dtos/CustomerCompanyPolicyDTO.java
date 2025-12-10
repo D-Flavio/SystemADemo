@@ -11,14 +11,14 @@ public class CustomerCompanyPolicyDTO {
     private String agntnum;
     private String mailAddress;
 
-    public CustomerCompanyPolicyDTO(String chdrnum, String cownnum, String ownerName, String lifcNum, String lifcName, String aracde, String agntnum, String mailAddress) {
-        this.chdrnum = chdrnum;
-        this.cownnum = cownnum;
+    public CustomerCompanyPolicyDTO(String chdrNum, String cownNum, String ownerName, String lifcNum, String lifcName, String aracde, String agntNum, String mailAddress) {
+        this.chdrnum = chdrNum;
+        this.cownnum = cownNum;
         this.ownerName = ownerName;
         this.lifcNum = lifcNum;
         this.lifcName = lifcName;
         this.aracde = aracde;
-        this.agntnum = agntnum;
+        this.agntnum = agntNum;
         this.mailAddress = mailAddress;
     }
 

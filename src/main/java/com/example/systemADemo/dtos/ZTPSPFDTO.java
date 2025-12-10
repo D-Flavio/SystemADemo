@@ -11,9 +11,9 @@ public class ZTPSPFDTO {
     private String currency;
     private LocalDateTime validDate;
 
-    public ZTPSPFDTO(String chdrnum, BigDecimal survalue, String company, String currency, LocalDateTime validDate) {
-        this.chdrnum = chdrnum;
-        this.survalue = survalue;
+    public ZTPSPFDTO(String chdrNum, BigDecimal surValue, String company, String currency, LocalDateTime validDate) {
+        this.chdrnum = chdrNum;
+        this.survalue = surValue;
         this.company = company;
         this.currency = currency;
         this.validDate = validDate;
