@@ -5,6 +5,8 @@ import com.example.SystemADemo.service.FileService;
 import com.example.SystemADemo.dtos.CustomerCompanyPolicyDTO;
 import com.example.SystemADemo.dtos.OutpayHeaderDTO;
 import com.example.SystemADemo.dtos.ZTPSPFDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -24,23 +26,29 @@ public class RestController {
     @Autowired
     private FileService fileService;
 
+    private static final Logger logger = LoggerFactory.getLogger(RestController.class);
+
     private static final String desktopPath = System.getProperty("user.home") + "/Desktop";
 
     @GetMapping("/move")
     public void startMove() {
+        logger.info("Start move");
         fileService.makeDirectory("SystemAExports");
         fileService.moveFile(Paths.get(desktopPath + "/tmp/CUSTCOMP01.txt"), Paths.get(desktopPath + "/SystemAExports/CUSTCOMP01.txt"));
         fileService.moveFile(Paths.get(desktopPath + "/tmp/OUTPH_CUP_20200204_1829.TXT"), Paths.get(desktopPath + "/SystemAExports/OUTPH_CUP_20200204_1829.TXT"));
         fileService.moveFile(Paths.get(desktopPath + "/tmp/ZTPSPF.TXT"), Paths.get(desktopPath + "/SystemAExports/ZTPSPF.TXT"));
+        logger.info("End move");
     }
 
     @GetMapping("/csv")
     public void startExportToCSV() {
+        logger.info("Start exportToCSV");
         Path destination = Paths.get(desktopPath + "/SystemAExports");
         fileService.makeDirectory("SystemAExports");
         dtoWriterService.writeCustomerCompanyPolicy(generateCustomerCompanyPolicies(), destination);
         dtoWriterService.writeOutpayHeader(generateOutpayHeaders(), destination);
         dtoWriterService.writeZTPSPFT(generateZTPSPFs(), destination);
+        logger.info("End exportToCSV");
     }
 
     private List<CustomerCompanyPolicyDTO> generateCustomerCompanyPolicies() {

@@ -1,6 +1,8 @@
 package com.example.SystemADemo.service.impl;
 
 import com.example.SystemADemo.service.FileService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -13,12 +15,17 @@ public class FileServiceImpl implements FileService {
 
     private static final String desktopPath = System.getProperty("user.home") + "/Desktop";
 
+    private static final Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
+
     @Override
     public void makeDirectory(String fileName) {
         File directory = new File(desktopPath + "/" + fileName);
 
         if (!directory.exists()){
             directory.mkdirs();
+            logger.info("Directory created: {}", directory.getAbsolutePath());
+        } else  {
+            logger.info("Directory already exists: {}", directory.getAbsolutePath());
         }
     }
 
@@ -28,14 +35,14 @@ public class FileServiceImpl implements FileService {
         try {
             temp = Files.move(source, destination);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            logger.error(e.getMessage());
         }
 
         if(temp != null) {
-            System.out.println("File moved successfully");
+            logger.info("Moving file from {} to {}", source, destination);
         }
         else {
-            System.out.println("Failed to move the file");
+            logger.error("File moving failed.");
         }
     }
 }

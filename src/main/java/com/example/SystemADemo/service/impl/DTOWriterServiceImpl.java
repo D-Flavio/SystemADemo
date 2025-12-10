@@ -5,6 +5,8 @@ import com.example.SystemADemo.dtos.OutpayHeaderDTO;
 import com.example.SystemADemo.dtos.ZTPSPFDTO;
 import com.example.SystemADemo.service.DTOWriterService;
 import com.opencsv.CSVWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.io.FileWriter;
@@ -19,7 +21,10 @@ import java.util.List;
 @Service
 public class DTOWriterServiceImpl implements DTOWriterService {
 
+    private static final Logger logger = LoggerFactory.getLogger(DTOWriterServiceImpl.class);
+
     public void writeZTPSPFT(List<ZTPSPFDTO> list, Path destination) {
+        logger.info("Writing ZTPSPFDTOs to CSV file...");
         String filename = "ZTPSPF.csv";
         String path = destination + "/" + filename;
         char separator = Character.MIN_VALUE;
@@ -31,9 +36,11 @@ public class DTOWriterServiceImpl implements DTOWriterService {
         }
 
         writeAllLines(lines, path, separator, lineEnd);
+        logger.info("Done writing ZTPSPFDTOs to CSV file...");
     }
 
     public void writeOutpayHeader(List<OutpayHeaderDTO> list, Path destination) {
+        logger.info("Writing OutpayHeaderDTOs to CSV file...");
         String filename = "OUTPH_CUP_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmm")) + ".csv";
         String path = destination + "/" + filename;
         char separator = ';';
@@ -45,9 +52,11 @@ public class DTOWriterServiceImpl implements DTOWriterService {
         }
 
         writeAllLines(lines, path, separator, lineEnd);
+        logger.info("Done writing OutpayHeaderDTOs to CSV file...");
     }
 
     public void writeCustomerCompanyPolicy(List<CustomerCompanyPolicyDTO> list, Path destination) {
+        logger.info("Writing CustomerCompanyPolicyDTOs to CSV file...");
         //TODO some logic for numbering the filename
         String filename = "CUSTCOMP" + "01"  + ".csv";
         String path = destination + "/" + filename;
@@ -60,6 +69,7 @@ public class DTOWriterServiceImpl implements DTOWriterService {
         }
 
         writeAllLines(lines, path, separator, lineEnd);
+        logger.info("Done writing CustomerCompanyPolicyDTOs to CSV file...");
     }
 
     private String[] zTPSPFToLine(ZTPSPFDTO object) {
@@ -106,13 +116,12 @@ public class DTOWriterServiceImpl implements DTOWriterService {
                 object.getMailAddress()};
     }
 
-    //TODO error hanling
     private static void writeAllLines(List<String[]> lines, String path, char separator, String lineEnd) {
         try (CSVWriter writer = new CSVWriter(new FileWriter(path), separator, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, lineEnd)) {
             writer.writeAll(lines);
-            System.out.println("FileWritingComplete");
+            logger.info("Done writing all lines to CSV file...");
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            logger.error("Error writing all lines to CSV file!", e);
         }
     }
 }
