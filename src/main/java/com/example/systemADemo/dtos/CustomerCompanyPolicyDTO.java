@@ -1,4 +1,4 @@
-package com.example.SystemADemo.dtos;
+package com.example.systemADemo.dtos;
 
 public class CustomerCompanyPolicyDTO extends BaseDTO {
 

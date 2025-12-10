@@ -1,6 +1,6 @@
-package com.example.SystemADemo;
+package com.example.systemADemo;
 
-import com.example.SystemADemo.service.FileService;
+import com.example.systemADemo.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

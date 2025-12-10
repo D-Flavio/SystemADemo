@@ -1,8 +1,8 @@
-package com.example.SystemADemo.service;
+package com.example.systemADemo.service;
 
-import com.example.SystemADemo.dtos.CustomerCompanyPolicyDTO;
-import com.example.SystemADemo.dtos.OutpayHeaderDTO;
-import com.example.SystemADemo.dtos.ZTPSPFDTO;
+import com.example.systemADemo.dtos.CustomerCompanyPolicyDTO;
+import com.example.systemADemo.dtos.OutpayHeaderDTO;
+import com.example.systemADemo.dtos.ZTPSPFDTO;
 import org.springframework.stereotype.Service;
 
 import java.nio.file.Path;

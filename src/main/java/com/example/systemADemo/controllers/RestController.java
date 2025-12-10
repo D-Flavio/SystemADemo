@@ -1,10 +1,10 @@
-package com.example.SystemADemo.controllers;
+package com.example.systemADemo.controllers;
 
-import com.example.SystemADemo.service.DTOWriterService;
-import com.example.SystemADemo.service.FileService;
-import com.example.SystemADemo.dtos.CustomerCompanyPolicyDTO;
-import com.example.SystemADemo.dtos.OutpayHeaderDTO;
-import com.example.SystemADemo.dtos.ZTPSPFDTO;
+import com.example.systemADemo.service.DTOWriterService;
+import com.example.systemADemo.service.FileService;
+import com.example.systemADemo.dtos.CustomerCompanyPolicyDTO;
+import com.example.systemADemo.dtos.OutpayHeaderDTO;
+import com.example.systemADemo.dtos.ZTPSPFDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

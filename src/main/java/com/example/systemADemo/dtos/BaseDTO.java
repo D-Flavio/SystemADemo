@@ -1,4 +1,4 @@
-package com.example.SystemADemo.dtos;
+package com.example.systemADemo.dtos;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

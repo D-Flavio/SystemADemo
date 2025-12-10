@@ -1,9 +1,9 @@
-package com.example.SystemADemo.service.impl;
+package com.example.systemADemo.service.impl;
 
-import com.example.SystemADemo.dtos.CustomerCompanyPolicyDTO;
-import com.example.SystemADemo.dtos.OutpayHeaderDTO;
-import com.example.SystemADemo.dtos.ZTPSPFDTO;
-import com.example.SystemADemo.service.DTOWriterService;
+import com.example.systemADemo.dtos.CustomerCompanyPolicyDTO;
+import com.example.systemADemo.dtos.OutpayHeaderDTO;
+import com.example.systemADemo.dtos.ZTPSPFDTO;
+import com.example.systemADemo.service.DTOWriterService;
 import com.opencsv.CSVWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

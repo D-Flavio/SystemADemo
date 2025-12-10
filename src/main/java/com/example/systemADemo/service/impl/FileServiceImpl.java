@@ -1,6 +1,6 @@
-package com.example.SystemADemo.service.impl;
+package com.example.systemADemo.service.impl;
 
-import com.example.SystemADemo.service.FileService;
+import com.example.systemADemo.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
