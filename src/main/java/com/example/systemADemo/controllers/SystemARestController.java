@@ -7,8 +7,8 @@ import com.example.systemADemo.dtos.OutpayHeaderDTO;
 import com.example.systemADemo.dtos.ZTPSPFDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.nio.file.Path;
@@ -17,18 +17,21 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@org.springframework.web.bind.annotation.RestController
-public class RestController {
+@RestController
+public class SystemARestController {
 
-    @Autowired
-    private DTOWriterService dtoWriterService;
+    private final DTOWriterService dtoWriterService;
 
-    @Autowired
-    private FileService fileService;
+    private final FileService fileService;
 
-    private static final Logger logger = LoggerFactory.getLogger(RestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(SystemARestController.class);
 
     private static final String desktopPath = System.getProperty("user.home") + "/Desktop";
+
+    public SystemARestController(DTOWriterService dtoWriterService, FileService fileService) {
+        this.dtoWriterService = dtoWriterService;
+        this.fileService = fileService;
+    }
 
     @GetMapping("/move")
     public void startMove() {
